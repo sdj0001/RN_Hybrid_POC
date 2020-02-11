@@ -1,0 +1,6 @@
+module Pods_RN_Hybrid_test {
+  umbrella header "Pods-RN_Hybrid_test-umbrella.h"
+
+  export *
+  module * { export * }
+}
