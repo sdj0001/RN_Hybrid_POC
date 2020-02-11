@@ -8,18 +8,19 @@
 
 import UIKit
 
-class RNBridgeViewController: UIViewController {
+class RNBridgeViewController: UIViewController, RCTBridgeDelegate {
+    
+    var bridge: RCTBridge!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bridge = RCTBridge.init(delegate: self, launchOptions: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(backAction), name: NSNotification.Name(rawValue: BACKNOTIFY), object: nil)
         setUpRN()
     }
-    
 
     func setUpRN() {
-//        let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")!
-        let jsCodeLocation = GA_CURRENT_RN_BUNDLE.url(forResource: "main", withExtension: "jsbundle")!
+        
         let mockData:NSDictionary = ["scores":
             [
                 ["name":"Alex", "value":"42"],
@@ -27,10 +28,9 @@ class RNBridgeViewController: UIViewController {
             ]
         ]
         let rootView = RCTRootView(
-            bundleURL: jsCodeLocation,
+            bridge: bridge,
             moduleName: "RNHighScores",
-            initialProperties: mockData as [NSObject : AnyObject],
-            launchOptions: nil
+            initialProperties: mockData as [NSObject : AnyObject]
         )
         self.view = rootView
     }
@@ -41,6 +41,11 @@ class RNBridgeViewController: UIViewController {
         } else {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func sourceURL(for bridge: RCTBridge!) -> URL! {
+        //        let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")!
+        return GA_CURRENT_RN_BUNDLE.url(forResource: "main", withExtension: "jsbundle")
     }
     
     deinit {
