@@ -13,7 +13,7 @@
 
 @end
 
-@interface RCT_EXTERN_MODULE(RNBradgeManager, NSObject)
+@interface RCT_EXTERN_MODULE(RNBridgeManager, NSObject)
 
 RCT_EXTERN_METHOD(backAction)
 

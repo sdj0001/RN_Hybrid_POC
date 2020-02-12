@@ -10,7 +10,7 @@ import UIKit
 
 let BACKNOTIFY = "BACKNOTIFY"
 
-@objc(RNBradgeManager)
+@objc(RNBridgeManager)
 class RNBridgeManager: NSObject {
     
     @objc(backAction)

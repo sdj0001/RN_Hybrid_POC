@@ -2,7 +2,7 @@
 import React from 'react';
 import {AppRegistry, StyleSheet, Text, View, TouchableOpacity, NativeModules} from 'react-native';
 
-var RNBradgeManager = NativeModules.RNBradgeManager;
+var RNBridgeManager = NativeModules.RNBridgeManager;
 
 class RNHighScores extends React.Component {
   render() {
@@ -15,7 +15,7 @@ class RNHighScores extends React.Component {
     return (
       <View style={{flex: 1}}>
         <View style={{height: 60}}>
-          <TouchableOpacity style={{marginLeft: 15, marginTop: 15, width: 80}} onPress={()=> RNBradgeManager.backAction()}>
+          <TouchableOpacity style={{marginLeft: 15, marginTop: 15, width: 80}} onPress={()=> RNBridgeManager.backAction()}>
             <Text style={{fontSize: 20,textAlign: 'center', marginLeft: 10}}>Back</Text>
           </TouchableOpacity>
         </View>
